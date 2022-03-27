@@ -6,11 +6,9 @@ pipeline {
             agent { label 'slave'}
             steps {
                 echo 'Install Puppet'
-                sh "wget -N -O 'puppet.deb' https://apt.puppetlabs.com/puppet6-release-bionic.deb"
-                sh "chmod 755 puppet.deb"
-                sh "sudo dpkg -i puppet.deb"
-                sh "sudo apt update"
-                sh "sudo apt install -y puppet-agent"
+                sh "sudo rpm -Uvh https://yum.puppet.com/puppet7-release-el-8.noarch.rpm"
+                sh "sudo yum update -y"
+		sh "sudo yum install -y puppet-agent"
             }
         }
 
